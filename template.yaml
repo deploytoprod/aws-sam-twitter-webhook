@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Template for Webhooks API
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  SAMTwitterWebhookActivity:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: twitter-webhook-activity/
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          BUCKETNAME: !Ref BucketForOutputFile
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+              Resource: !GetAtt BucketForOutputFile.Arn
+      Events:
+        APIGateway:
+          Type: Api
+          Properties:
+            Path: /webhook/twitter/cloudlopes
+            Method: post
+            
+  SAMTwitterCRCResponse:
+    DependsOn: BucketForOutputFile
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: twitter-crc-response/
+      Handler: lambda_function.crc
+      Runtime: python3.6
+
+      Events:
+        APIGateway:
+          Type: Api
+          Properties:
+            Path: /webhook/twitter/cloudlopes
+            Method: get
+
+  BucketForOutputFile:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: PublicRead
