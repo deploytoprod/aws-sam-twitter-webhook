@@ -22,7 +22,7 @@ Resources:
             - Effect: Allow
               Action:
                 - s3:PutObject
-              Resource: !GetAtt BucketForOutputFile.Arn
+              Resource: !Sub "arn:aws:s3:::${BucketForOutputFile}/staic/*"
       Events:
         APIGateway:
           Type: Api

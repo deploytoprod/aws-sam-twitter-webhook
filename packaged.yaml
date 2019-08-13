@@ -8,7 +8,7 @@ Resources:
   SAMTwitterWebhookActivity:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://raf-sam-test/1e807638a0a5f2f6ee0eb019096450eb
+      CodeUri: s3://raf-sam-test/bd4bbab95541e78bba1b19eb9866f2e2
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
       Environment:
@@ -22,9 +22,7 @@ Resources:
           Action:
           - s3:PutObject
           Resource:
-            Fn::GetAtt:
-            - BucketForOutputFile
-            - Arn
+            Fn::Sub: arn:aws:s3:::${BucketForOutputFile}/staic/*
       Events:
         APIGateway:
           Type: Api
@@ -35,7 +33,7 @@ Resources:
     DependsOn: BucketForOutputFile
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://raf-sam-test/cf90dc4ac9c3614bb78632e31b392f71
+      CodeUri: s3://raf-sam-test/dbd03f44ba771bff9cb6dea53d404046
       Handler: lambda_function.crc
       Runtime: python3.6
       Events:
