@@ -1,0 +1,143 @@
+{
+  "resource": "/webhook/twitter/cloudlopes",
+  "path": "/webhook/twitter/cloudlopes",
+  "httpMethod": "GET",
+  "headers": {
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "US",
+    "Finagle-Ctx-com.twitter.finagle.Deadline": "1650257122784000000 1650257125759000000",
+    "Finagle-Ctx-com.twitter.finagle.Retries": "0",
+    "Host": "6dcz5evzch.execute-api.us-east-1.amazonaws.com",
+    "User-Agent": "Amazon CloudFront",
+    "Via": "1.1 dfba9f42e0c81b39f19f55d4370736fe.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "F_pRr2fmLxOlBBoPfEM2EWPmwVDQawPeE28KrE8DxZsxTGWot79A-Q==",
+    "X-Amzn-Trace-Id": "Root=1-625cece2-574f00c50a2785745bd3fcce",
+    "X-B3-Flags": "2",
+    "X-B3-ParentSpanId": "82da62455d8014cd",
+    "X-B3-Sampled": "false",
+    "X-B3-SpanId": "b4c824c7a86222c6",
+    "X-B3-TraceId": "6eb8b5f4a0abc334",
+    "X-Forwarded-For": "199.16.157.172, 130.176.106.93",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https",
+    "X-Twitter-Webhooks-Signature": "sha256=BeWssYfOfxoeIjZNT1F2L2evkDmy6eNBkMhF1IdBUaQ="
+  },
+  "multiValueHeaders": {
+    "CloudFront-Forwarded-Proto": [
+      "https"
+    ],
+    "CloudFront-Is-Desktop-Viewer": [
+      "true"
+    ],
+    "CloudFront-Is-Mobile-Viewer": [
+      "false"
+    ],
+    "CloudFront-Is-SmartTV-Viewer": [
+      "false"
+    ],
+    "CloudFront-Is-Tablet-Viewer": [
+      "false"
+    ],
+    "CloudFront-Viewer-Country": [
+      "US"
+    ],
+    "Finagle-Ctx-com.twitter.finagle.Deadline": [
+      "1650257122784000000 1650257125759000000"
+    ],
+    "Finagle-Ctx-com.twitter.finagle.Retries": [
+      "0"
+    ],
+    "Host": [
+      "6dcz5evzch.execute-api.us-east-1.amazonaws.com"
+    ],
+    "User-Agent": [
+      "Amazon CloudFront"
+    ],
+    "Via": [
+      "1.1 dfba9f42e0c81b39f19f55d4370736fe.cloudfront.net (CloudFront)"
+    ],
+    "X-Amz-Cf-Id": [
+      "F_pRr2fmLxOlBBoPfEM2EWPmwVDQawPeE28KrE8DxZsxTGWot79A-Q=="
+    ],
+    "X-Amzn-Trace-Id": [
+      "Root=1-625cece2-574f00c50a2785745bd3fcce"
+    ],
+    "X-B3-Flags": [
+      "2"
+    ],
+    "X-B3-ParentSpanId": [
+      "82da62455d8014cd"
+    ],
+    "X-B3-Sampled": [
+      "false"
+    ],
+    "X-B3-SpanId": [
+      "b4c824c7a86222c6"
+    ],
+    "X-B3-TraceId": [
+      "6eb8b5f4a0abc334"
+    ],
+    "X-Forwarded-For": [
+      "199.16.157.172, 130.176.106.93"
+    ],
+    "X-Forwarded-Port": [
+      "443"
+    ],
+    "X-Forwarded-Proto": [
+      "https"
+    ],
+    "X-Twitter-Webhooks-Signature": [
+      "sha256=BeWssYfOfxoeIjZNT1F2L2evkDmy6eNBkMhF1IdBUaQ="
+    ]
+  },
+  "queryStringParameters": {
+    "crc_token": "YzAxZTBkYzQtNDZiMi00N2MwLWE1MWEtMGE2NmI1NDRiZGQ0",
+    "nonce": "MTY1MDI1NzEyMjc1Nw"
+  },
+  "multiValueQueryStringParameters": {
+    "crc_token": [
+      "YzAxZTBkYzQtNDZiMi00N2MwLWE1MWEtMGE2NmI1NDRiZGQ0"
+    ],
+    "nonce": [
+      "MTY1MDI1NzEyMjc1Nw"
+    ]
+  },
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+    "resourceId": "n6klqh",
+    "resourcePath": "/webhook/twitter/cloudlopes",
+    "httpMethod": "GET",
+    "extendedRequestId": "QwnzeHJqoAMFcgg=",
+    "requestTime": "18/Apr/2022:04:45:22 +0000",
+    "path": "/Prod/webhook/twitter/cloudlopes",
+    "accountId": "303244894188",
+    "protocol": "HTTP/1.1",
+    "stage": "Prod",
+    "domainPrefix": "6dcz5evzch",
+    "requestTimeEpoch": 1650257122841,
+    "requestId": "6a10e92b-2dc4-42cf-83d6-6cd95f0b91b7",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "sourceIp": "199.16.157.172",
+      "principalOrgId": null,
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "Amazon CloudFront",
+      "user": null
+    },
+    "domainName": "6dcz5evzch.execute-api.us-east-1.amazonaws.com",
+    "apiId": "6dcz5evzch"
+  },
+  "body": null,
+  "isBase64Encoded": false
+}
