@@ -1,6 +1,10 @@
 import boto3
 import json
-
+from os import environ
+null = None
+none = None
+false = False
+true = True
 
 def crc(event, context):
     print(json.dumps(event))
@@ -14,13 +18,12 @@ def crc(event, context):
     import base64
     import hmac
     import hashlib
-
     print('Calculating CRC')
     ssm = boto3.client('ssm')
     try:
         response = ssm.get_parameters(
             Names=[
-                'sls.dev.twitter.translator.consumer.secret'
+                environ['TWITTERAPISECRET']
             ],
             WithDecryption=True
         )
@@ -28,7 +31,7 @@ def crc(event, context):
         print('Problem getting keys from SSM: {}'.format(error))
         return {
             'statusCode': 501,
-            'body': 'Problem getting consumer key'
+            'body': 'Problem getting Twitter API Key Secret'
         }
     else:
         params = response['Parameters']
