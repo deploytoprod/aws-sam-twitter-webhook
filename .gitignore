@@ -1,3 +1,4 @@
 .vscode
 tests
 .DS_Store
+.aws-sam
