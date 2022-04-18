@@ -1,71 +1,73 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Template for Webhooks API
-
 Globals:
   Function:
     Timeout: 3
-
 Resources:
   SAMTwitterWebhookActivity:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: twitter-webhook-activity/
+      CodeUri: SAMTwitterWebhookActivity
       Handler: lambda_function.lambda_handler
       Runtime: python3.9
       Environment:
         Variables:
-          BUCKETNAME: !Ref BucketForOutputFile
+          BUCKETNAME:
+            Ref: BucketForOutputFile
       Policies:
-        - Version: '2012-10-17'
-          Statement:
-            - Effect: Allow
-              Action:
-                - s3:PutObject
-              Resource: !Sub "arn:aws:s3:::${BucketForOutputFile}/*"
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - s3:PutObject
+          Resource:
+            Fn::Sub: arn:aws:s3:::${BucketForOutputFile}/*
       Events:
         APIGateway:
           Type: Api
           Properties:
             Path: /webhook/twitter/cloudlopes
             Method: post
-            
+    Metadata:
+      SamResourceId: SAMTwitterWebhookActivity
   SAMTwitterCRCResponse:
     DependsOn: BucketForOutputFile
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: twitter-crc-response/
+      CodeUri: SAMTwitterCRCResponse
       Handler: lambda_function.crc
       Runtime: python3.9
       Policies:
-        - SSMParameterReadPolicy:
-            ParameterName: sls.dev.twitter.translator.consumer.secret
-
+      - SSMParameterReadPolicy:
+          ParameterName: sls.dev.twitter.translator.consumer.secret
       Events:
         APIGateway:
           Type: Api
           Properties:
             Path: /webhook/twitter/cloudlopes
             Method: get
-
+    Metadata:
+      SamResourceId: SAMTwitterCRCResponse
   BucketForOutputFile:
     Type: AWS::S3::Bucket
-    Properties: 
+    Properties:
       AccessControl: PublicRead
-
   SampleBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: !Ref BucketForOutputFile
+      Bucket:
+        Ref: BucketForOutputFile
       PolicyDocument:
         Version: 2012-10-17
         Statement:
-          - Action:
-              - 's3:GetObject'
-            Effect: Allow
-            Resource: !Join
-              - ''
-              - - 'arn:aws:s3:::'
-                - !Ref BucketForOutputFile
-                - /*
-            Principal: '*'
+        - Action:
+          - s3:GetObject
+          Effect: Allow
+          Resource:
+            Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: BucketForOutputFile
+              - /*
+          Principal: '*'
